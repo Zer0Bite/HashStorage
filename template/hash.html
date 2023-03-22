@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HashStorage</title>
+    <link rel="icon" href="/static/image/icon.ico">
+    <link href="/static/index.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container3">
+        <nav>
+            <ul>
+                <li><a href="http://127.0.0.1:5000/">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/verify">Verify File</a></li>
+                 <button name="connect" id="connect" class="input_wallet"  type="submit"  />
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container2">
+        <form method="POST" enctype="multipart/form-data">
+                <h1>Account</h1>
+                <input class="input" name="userAddress" id="userAddress" type="text" size="40">
+                <br>
+                <br>
+                <input type="file" id="upload" name="file" hidden/>
+                <label class="input" for="upload">Choose File</label>
+                <br>
+                <br>
+                <input  class="input"  type="submit" value="Upload Hash">
+        </form>
+    </div>
+
+    <canvas  id="canv" />
+    <script src="/static/particle.js"></script>
+    <script src="/static/connect.js"></script>
+
+</body>
+</html>
