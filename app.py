@@ -1,7 +1,6 @@
 import random
 from flask import Flask, request, jsonify, render_template, session, send_file, redirect
-import inTransact
-import getTransact
+import InGetTransact
 import hash
 
 app = Flask(__name__,  template_folder='template', static_folder='static')
@@ -18,7 +17,7 @@ def IndexHash():
 
 
 @app.route('/hash', methods=['POST'])
-def CheckHash():
+def UploadHash():
 
     file = request.files['file']
     file.save(file.filename)
@@ -27,7 +26,8 @@ def CheckHash():
     userId = random.getrandbits(214)
     with open('certificate\\certificate.txt', "w") as fileCertificate:
         fileCertificate.write('Address: ' + str(userAddress) + '\n' + 'File Name: ' + file.filename + '\n' + 'ID: ' + str(userId) + '\n' + 'File Hash: ' + fileHash)
-    inTransact.insertTransaction(str(userAddress), int(userId), str(fileHash))
+    transact = InGetTransact.Transact()
+    transact.insertTransaction(str(userAddress), int(userId), str(fileHash))
     path = 'certificate\\certificate.txt'
     return send_file(path, as_attachment=True)
 
@@ -44,7 +44,9 @@ def Verify():
     file = request.files['file']
     file.save(file.filename)
     fileHash = hash.getHash(file.filename)
-    hashInBlock = getTransact.getTransaction(str(userAddress), int(userId))
+    transact = InGetTransact.Transact()
+    hashInBlock = transact.getTransaction(str(userAddress), int(userId))
+
 
     if fileHash == hashInBlock:
         return render_template('good.html')
