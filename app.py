@@ -23,7 +23,7 @@ def UploadHash():
     file.save(file.filename)
     fileHash = hash.getHash(file.filename)
     userAddress = request.form['userAddress']
-    userId = random.getrandbits(214)
+    userId = random.getrandbits(212)
     with open('certificate\\certificate.txt', "w") as fileCertificate:
         fileCertificate.write('Address: ' + str(userAddress) + '\n' + 'File Name: ' + file.filename + '\n' + 'ID: ' + str(userId) + '\n' + 'File Hash: ' + fileHash)
     transact = InGetTransact.Transact()
@@ -55,4 +55,4 @@ def Verify():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
