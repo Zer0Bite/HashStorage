@@ -2,6 +2,11 @@ import random
 from flask import Flask, request, jsonify, render_template, session, send_file, redirect
 import InGetTransact
 import hash
+import pyfiglet
+intro = pyfiglet.figlet_format('Hash Storage', font = 'slant')
+print('-------------------------------------------------------------------------')
+print(intro)
+print('-------------------------------------------------------------------------')
 
 app = Flask(__name__,  template_folder='template', static_folder='static')
 
