@@ -6,27 +6,27 @@ print('Enter contract address')
 BLOCKCHAIN_ADDRESS = 'http://127.0.0.1:9545'
 WEB3 = Web3(HTTPProvider(BLOCKCHAIN_ADDRESS))
 COMPILED_CONTRACT_PATH = 'build/contracts/HashStorage.json'
-DEPLOYED_CONTRACT_ADDRESS = 'enter you address smart-contract'
+DEPLOYED_CONTRACT_ADDRESS = 'smart-contract address'
 
 with open(COMPILED_CONTRACT_PATH) as file:
-    contractJson = json.load(file)
-    contractAbi = contractJson['abi']
+    CONTRACT_JSON = json.load(file)
+    CONTRACT_ABi = CONTRACT_JSON['abi']
 
-contract = WEB3.eth.contract(address=DEPLOYED_CONTRACT_ADDRESS, abi=contractAbi)
+CONTRACT = WEB3.eth.contract(address=DEPLOYED_CONTRACT_ADDRESS, abi=CONTRACT_ABi)
 
 
 class Transact:
 
     def getTransaction(self, _address, _id):
         senderAddress = _address
-        output = contract.functions.getHash(_id).call({'from': WEB3.to_checksum_address(senderAddress)})
+        output = CONTRACT.functions.getHash(_id).call({'from': WEB3.to_checksum_address(senderAddress)})
 
         return output
 
     def insertTransaction(self, _address, _id, _hash):
 
         senderAddress = _address
-        txHash = contract.functions.insertHash(_id, _hash).transact({'from': WEB3.to_checksum_address(senderAddress)})
+        txHash = CONTRACT.functions.insertHash(_id, _hash).transact({'from': WEB3.to_checksum_address(senderAddress)})
         txReceipt = WEB3.eth.wait_for_transaction_receipt(txHash)
 
         if txReceipt['status'] == 1:
