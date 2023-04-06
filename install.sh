@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Install truffle"
+echo "Install"
 sudo apt update
 sudo apt install nodejs
 sudo apt install npm
