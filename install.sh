@@ -1,5 +1,7 @@
 #!/bin/bash
 echo "Install truffle"
+sudo apt update
+sudo apt install nodejs
 sudo apt install npm
 sudo npm install -g truffle
 sudo pip install web3==6.0.0
