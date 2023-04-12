@@ -36,6 +36,17 @@
                 <input  class="input"  type="submit" value="Verify">
         </form>
     </div>
+    {%if show_panel_good%}
+       <div class="container2">
+            <h1>File has not been modified</h1>
+       </div>
+    {% endif %}
+    {%if show_panel_bad%}
+       <div class="container2">
+            <h1>File has been modified</h1>
+       </div>
+    {% endif %}
+
 
     <canvas  id="canv" />
     <script src="/static/particle.js"></script>

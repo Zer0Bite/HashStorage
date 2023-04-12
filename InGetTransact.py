@@ -2,10 +2,10 @@ import json
 from web3 import Web3, HTTPProvider
 
 
-BLOCKCHAIN_ADDRESS = 'your address'
+BLOCKCHAIN_ADDRESS = 'http://127.0.0.1:7545'
 WEB3 = Web3(HTTPProvider(BLOCKCHAIN_ADDRESS))
 COMPILED_CONTRACT_PATH = 'build/contracts/HashStorage.json'
-DEPLOYED_CONTRACT_ADDRESS = 'your smart-contract address'
+DEPLOYED_CONTRACT_ADDRESS = '0x0bDc73Adc91E2AC58d757ecAbCd4e774F9358fb8'
 
 with open(COMPILED_CONTRACT_PATH) as file:
     CONTRACT_JSON = json.load(file)

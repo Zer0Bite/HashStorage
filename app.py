@@ -54,9 +54,9 @@ def Verify():
 
 
     if fileHash == hashInBlock:
-        return render_template('good.html')
+        return render_template('verify.html', show_panel_good=True)
     else:
-        return render_template('bad.html')
+        return render_template('bad.html', show_panel_bad=True)
 
 
 if __name__ == '__main__':
