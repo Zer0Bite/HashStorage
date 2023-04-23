@@ -1,8 +1,10 @@
 import random
 from flask import Flask, request, jsonify, render_template, session, send_file, redirect
+from pathlib import Path
 import InGetTransact
 import hash
 import pyfiglet
+
 intro = pyfiglet.figlet_format('Hash Storage', font = 'slant')
 print('-------------------------------------------------------------------------')
 print(intro)
@@ -21,9 +23,8 @@ def IndexHash():
     return render_template('hash.html')
 
 
-@app.route('/hash', methods=['POST'])
+@app.route('/hash', methods=['GET', 'POST'])
 def UploadHash():
-
     file = request.files['file']
     file.save(file.filename)
     fileHash = hash.getHash(file.filename)
@@ -34,6 +35,7 @@ def UploadHash():
     transact = InGetTransact.Transact()
     transact.insertTransaction(str(userAddress), int(userId), str(fileHash))
     path = 'certificate\\certificate.txt'
+    Path(file.filename).unlink()
     return send_file(path, as_attachment=True)
 
 
@@ -51,12 +53,11 @@ def Verify():
     fileHash = hash.getHash(file.filename)
     transact = InGetTransact.Transact()
     hashInBlock = transact.getTransaction(str(userAddress), int(userId))
-
-
+    Path(file.filename).unlink()
     if fileHash == hashInBlock:
         return render_template('verify.html', show_panel_good=True)
     else:
-        return render_template('bad.html', show_panel_bad=True)
+        return render_template('verify.html', show_panel_bad=True)
 
 
 if __name__ == '__main__':
