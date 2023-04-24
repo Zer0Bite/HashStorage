@@ -33,8 +33,7 @@ def upload_hash():
     file_hash = hash.getHash(file.filename)
     user_address = request.form['userAddress']
     user_id = uuid.uuid4().int
-    print(user_id)
-    certificate_path = os.path.join('certificate', file.filename + '.txt')
+    certificate_path = os.path.join('certificate', file.filename + '.cert')
     with open(certificate_path, "w") as certificate_file:
         certificate_file.write('Address: ' + str(user_address) + '\n' +
                                 'File Name: ' + file.filename + '\n' +
