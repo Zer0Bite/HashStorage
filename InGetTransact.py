@@ -13,7 +13,7 @@ class Transact:
         self.blockchain_address = blockchain_address
         self.compiled_contract_path = compiled_contract_path
         self.deployed_contract_address = deployed_contract_address
-        self.web3 = Web3(HTTPProvider(blockchain_address))
+        self.web3 = Web3(HTTPProvider(self.blockchain_address))
         self.contract = self.connect()
 
     def connect(self):
