@@ -40,7 +40,7 @@ def upload_hash():
                                 'ID: ' + str(user_id) + '\n' +
                                 'File Hash: ' + file_hash + '\n' +
                                 'Date: ' + str(datetime.datetime.now()))
-    transact = InGetTransact.Transact()
+    transact = InGetTransact.transact_in
     transact.insertTransaction(str(user_address), int(user_id), str(file_hash))
     Path(file.filename).unlink()
     return send_file(certificate_path, as_attachment=True)
@@ -59,7 +59,7 @@ def verify():
     file = request.files['file']
     file.save(file.filename)
     file_hash = hash.getHash(file.filename)
-    transact = InGetTransact.Transact()
+    transact = InGetTransact.transact_get
     hash_in_block = transact.getTransaction(str(user_address), int(user_id))
     Path(file.filename).unlink()
     if file_hash == hash_in_block:
