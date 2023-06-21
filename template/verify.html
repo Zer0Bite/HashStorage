@@ -33,17 +33,17 @@
                 <label class="input" for="upload">Choose File</label>
                 <br>
                 <br>
-                <input  class="input"  type="submit" value="Verify">
+                <button  class="input"  type="submit">Verify</button>
         </form>
     </div>
     {%if show_panel_good%}
        <div class="container2">
-            <h1>File has not been modified</h1>
+            <h1>Файл не был изменен</h1>
        </div>
     {% endif %}
     {%if show_panel_bad%}
        <div class="container2">
-            <h1>File has been modified</h1>
+            <h1>Файл был изменен</h1>
        </div>
     {% endif %}
 
