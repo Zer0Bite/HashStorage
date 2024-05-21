@@ -1,36 +1,57 @@
 # HashStorage
-<<<<<<< HEAD
-=======
 
-установка:
-chmod +x install.sh
+## Установка
 
-./install.sh
+1. Сделайте скрипт установки исполняемым:
+    ```bash
+    chmod +x install.sh
+    ```
 
-в окне truffle(develop) > написать migrate
+2. Запустите скрипт установки:
+    ```bash
+    ./install.sh
+    ```
 
-в файле InGetTransact.py прописать адрес контракта который выдал truffle
+3. В окне truffle(develop) выполните команду:
+    ```bash
+    migrate
+    ```
 
-запуск:
+4. В файле `InGetTransact.py` пропишите адрес контракта, который выдал truffle.
 
-в новом окне терминала прописать python3 app.py
+## Запуск
 
+1. В новом окне терминала выполните команду:
+    ```bash
+    python3 app.py
+    ```
 
 ------------------------------------------------------
 
-installation:
-chmod +x install.sh
+# HashStorage
 
-./install.sh
+## Installation
 
-in the window truffle(develop) > write migrate
+1. Make the install script executable:
+    ```bash
+    chmod +x install.sh
+    ```
 
-in the InGetTransact.py file, write the address of the contract that issued truffle
+2. Run the install script:
+    ```bash
+    ./install.sh
+    ```
 
-launch:
+3. In the truffle(develop) window, run the command:
+    ```bash
+    migrate
+    ```
 
-in a new terminal window, write python3 app.py
+4. In the `InGetTransact.py` file, write the address of the contract that was issued by truffle.
 
+## Launch
 
-
->>>>>>> origin/main
+1. In a new terminal window, run the command:
+    ```bash
+    python3 app.py
+    ```
